@@ -1,4 +1,3 @@
-// components/RangeSlider.tsx
 import React from 'react';
 
 interface RangeSliderProps {

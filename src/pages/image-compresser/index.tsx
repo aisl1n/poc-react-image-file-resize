@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Inputs } from '@/components/inputs';
 import { ChangeEvent, useState } from 'react';
 import { resizeImage } from '@/utils/image-utils';
-import DefaultLayout from '@/layout/defaultLayout';
+import DefaultLayout from '@/layout/default-layout';
 import { Select } from '@/components/select';
 import { RangeSlider } from '@/components/range-slider';
 
