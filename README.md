@@ -1,15 +1,24 @@
 # Setup
-Install the package:
+
+Instalar a biblioteca:
 
 ```
 npm i react-image-file-resizer
 ```
-or
 
+ou
+
+```
 yarn add react-image-file-resizer
-Usage
-import Resizer from "react-image-file-resizer";
+```
 
+# Uso
+
+```
+import Resizer from "react-image-file-resizer";
+```
+
+```js
 Resizer.imageFileResizer(
 file, // Is the file of the image which will resized.
 maxWidth, // Is the maxWidth of the resized new image.
@@ -22,9 +31,11 @@ outputType, // Is the output type of the resized new image.
 minWidth, // Is the minWidth of the resized new image.
 minHeight // Is the minHeight of the resized new image.
 );
-Example 1
-First, wrap the resizer:
+```
+# Exemplo
 
+## Primeiro, envolva o redimensionador
+```js
 import Resizer from "react-image-file-resizer";
 
 const resizeFile = (file) =>
@@ -42,77 +53,33 @@ resolve(uri);
 "base64"
 );
 });
-And then use it in your async function:
+```
 
+## E depois utilize com uma async function:
+
+```js
 const onChange = async (event) => {
-try {
-const file = event.target.files[0];
-const image = await resizeFile(file);
-console.log(image);
-} catch (err) {
-console.log(err);
-}
+  try {
+    const file = event.target.files[0];
+    const image = await resizeFile(file);
+    console.log(image);
+  } catch (err) {
+    console.log(err);
+  }
 };
-Example 2
-import React, { Component } from "react";
-import Resizer from "react-image-file-resizer";
+```
 
-class App extends Component {
-constructor(props) {
-super(props);
-this.fileChangedHandler = this.fileChangedHandler.bind(this);
-this.state = {
-newImage: "",
-};
-}
+# Opções e suas descrições, tipos e obrigatoriedades 
 
-fileChangedHandler(event) {
-var fileInput = false;
-if (event.target.files[0]) {
-fileInput = true;
-}
-if (fileInput) {
-try {
-Resizer.imageFileResizer(
-event.target.files[0],
-300,
-300,
-"JPEG",
-100,
-0,
-(uri) => {
-console.log(uri);
-this.setState({ newImage: uri });
-},
-"base64",
-200,
-200
-);
-} catch (err) {
-console.log(err);
-}
-}
-}
-
-render() {
-return (
-<div className="App">
-<input type="file" onChange={this.fileChangedHandler} />
-<img src={this.state.newImage} alt="" />
-</div>
-);
-}
-}
-
-export default App;
-Option Description Type Required
-file Path of image file object Yes
-maxWidth New image max width (ratio is preserved) number Yes
-maxHeight New image max height (ratio is preserved) number Yes
-compressFormat Can be either JPEG, PNG or WEBP. string Yes
-quality A number between 0 and 100. Used for the JPEG compression.(if no compress is needed, just set it to 100) number Yes
-rotation Degree of clockwise rotation to apply to the image. Rotation is limited to multiples of 90 degrees.(if no rotation is needed, just set it to 0) (0, 90, 180, 270, 360) number Yes
-responseUriFunc Callback function of URI. Returns URI of resized image's base64 format. ex: uri => {console.log(uri)}); function Yes
-outputType Can be either base64, blob or file.(Default type is base64) string No
-minWidth New image min width (ratio is preserved, defaults to null) number No
-minHeight New image min height (ratio is preserved, defaults to null) number No
+| Option            | Description                                              | Type     | Required |
+|-------------------|----------------------------------------------------------|----------|----------|
+| file              | Path of image file                                      | object   | Yes      |
+| maxWidth          | New image max width (ratio is preserved)                 | number   | Yes      |
+| maxHeight         | New image max height (ratio is preserved)                | number   | Yes      |
+| compressFormat    | Can be either JPEG, PNG or WEBP.                        | string   | Yes      |
+| quality           | A number between 0 and 100. Used for the JPEG compression. (if no compress is needed, just set it to 100) | number   | Yes      |
+| rotation          | Degree of clockwise rotation to apply to the image. Rotation is limited to multiples of 90 degrees. (if no rotation is needed, just set it to 0) (0, 90, 180, 270, 360) | number   | Yes      |
+| responseUriFunc   | Callback function of URI. Returns URI of resized image's base64 format. ex: uri => {console.log(uri)}); | function | Yes      |
+| outputType        | Can be either base64, blob or file. (Default type is base64) | string   | No       |
+| minWidth          | New image min width (ratio is preserved, defaults to null) | number   | No       |
+| minHeight         | New image min height (ratio is preserved, defaults to null) | number   | No       |

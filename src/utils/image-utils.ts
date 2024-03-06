@@ -20,7 +20,6 @@ export const resizeImage = async (
       quality,
       0,
       (uri) => {
-        console.log('qualidade setada: ' + quality);
         resolve(uri as string);
       }
     );
