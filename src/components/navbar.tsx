@@ -18,7 +18,7 @@ const Navbar = () => {
         </div>
         <div className='border-red-600'>
           <Link className='text-white mr-4 font-bold text-lg hover:text-cyan-600' href='/image-compresser'>
-            Comprimir Imagens
+            Redimencionar Imagens
           </Link>
         </div>
       </div>
